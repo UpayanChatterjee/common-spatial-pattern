@@ -135,6 +135,7 @@ whitening = cell(1, ns);
 S_l = cell(1, ns);
 S_r = cell(1, ns);
 B = cell(1, ns);
+eigen_value = cell(1, ns);
 W_orig = cell(1, ns);
 W_new = cell(1, ns);
 W = cell(1, ns);
@@ -149,7 +150,7 @@ for i = 1:ns
     S_r{i} = whitening{i} * cov_right{i} * whitening{i}';
     % [~, temp_eigenvalue_l] = eig_decompose_descend(S_l{i});
     % [~, temp_eigenvalue_r] = eig_decompose_ascend(S_r{i});
-    [B{i}, ~] = eig_decompose_descend(S_l{i});
+    [B{i}, eigen_value{i}] = eig_decompose_descend(S_l{i});
     W_orig{i} = (B{i}' * whitening{i});
 end
 
